@@ -1,5 +1,8 @@
 # DIY Transit Countdown Clock
 
+> [!NOTE]  
+> This guide is a work in progress. You can still follow it, but some details may be missing or incomplete.
+
 This guide will walk you through building an ESP32-S3-based countdown clock which shows the real-time arrival times for any public transit route of your choice. By the end of this guide, you will have something that looks like this:
 
 ![](finished.png)
