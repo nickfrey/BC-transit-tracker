@@ -5,7 +5,7 @@
 
 This guide will walk you through building an ESP32-S3-based countdown clock which shows the real-time arrival times for any public transit route of your choice. By the end of this guide, you will have something that looks like this:
 
-![](finished.png)
+![](finished.jpg)
 
 While we will be using this display as a countdown clock, you could customize it with your own firmware and display anything you'd like; however, that's out of scope for this guide.
 
