@@ -34,31 +34,25 @@ You will also need a 3D printer with a build volume of at least 30×115×210mm t
 
 First, remove the protective tape from the power terminal standoffs on the front of the Matrix Portal if you haven't already. Then, using the included screws, attach the power cable to the terminals. Make sure the red wire is connected to +5V and the black one is connected to GND.
 
-TK photo here
-
-Then connect the Matrix Portal to one of the displays using the 2x8 connector on the back of the display. Ensure you use the connector on the right side of the display when the arrows are pointing up.
+Then connect the Matrix Portal to one of the displays using the 2x8 connector on the back of the display.
 
 Due to the plastic nub on the back of the display, the board may not sit flush with it. This is normal. Press it in as much as you can without forcing it.
 
-TK photo here
-
-Now we will connect the power cable to the displays. The included power cable is quite long for our purpose and will require some clever cable management.
+Now we will connect the power cable to the displays. The included power cable is quite long for our purpose and will require some clever cable management. I recommend using a zip-tie or cable tie to keep everything nice and tidy.
 
 Unwind the cable such that the two connectors are separate and untangled from each other.
 
-TK photo here
-
 Coil the cable so that it's short enough to reach the second display without too much slack. You may need to experiment with the length to get it just right. Then place the coiled cable inside the back of the frame so that it wraps around both the other 2x8 connector and the power connector.
 
-TK photo here
+![](steps-img/1-manage-cables.jpg)
 
-Connect the power cable to both displays, bearing in mind the orientation of the cable. The red wires should be near the top, and the black wires should be near the bottom.
+Connect the power cable to both displays, bearing in mind the orientation of the cable. The black wires should be closer to "GND" and the red wires should be closer to "+5V".
 
-TK photo here
+![](steps-img/1-connect-power.jpg)
 
 Finally, use the 2x8 IDC cable that came with one of the displays to connect one display to the other, making sure the arrows on both displays are pointing in the same direction.
 
-TK photo here
+![](steps-img/1-connect-displays.jpg)
 
 Now that everything is wired together, you can plug the Matrix Portal board into a power supply and see the displays light up. The stock firmware flashed on Matrix Portal boards is for a single display, so don't worry if it looks wonky.
 
@@ -72,13 +66,17 @@ If the displays don't come to life:
 
 We will be using [ESPHome](https://esphome.io/) as the base for our display's firmware. ESPHome is a great platform with support for a wide range of devices and sensors, and it makes creating a custom ESP32-based device a very easy process. This means that you can extend the functionality of your countdown clock by adding more sensors in the future, as well as add it to home automation systems like Home Assistant.
 
-TK how are we going to flash & configure this?
+> [!NOTE]  
+> The software is still in the works.
 
 ### Part 3: 3D print the frame
 
 The frame for the display is designed to be 3D printed in two halves to accommodate the small build volume of most printers. Each half will fit one display and will be bolted together once assembled.
 
 The halves are identical, so you only need to print the same file twice. In the root of this repository you will find `frame.stl`.
+
+> [!NOTE]  
+> Your slicer may complain about the model not being water-tight or similar. This is normal due to how it was exported. You can manually inspect the generated G-code to ensure there are no issues.
 
 #### Recommendations
 
@@ -90,7 +88,7 @@ There is no specific material recommendation; I have tested with PLA and it work
 
 To eliminate the need for supports, you should print the frame on its side as shown below:
 
-![](orientation.png)
+![](steps-img/3-orientation.png)
 
 ##### Slicer settings
 
@@ -98,7 +96,7 @@ Layer height should be 0.2mm or less for good fit and finish.
 
 To ensure dimensional accuracy where the displays are mounted, change your slicer's settings so that the z-seam is inside the frame as shown below.
 
-![](z-seam.png)
+![](steps-img/3-zseam.png)
 
 In Cura, selecting "Sharpest Corner" for the "Z Seam Alignment" setting performs well.
 
@@ -112,21 +110,23 @@ We'll start with the primary display (the one with the board attached). With the
 
 If your cables have too much slack, it may pose a challenge to get the display to sit flush with the front of the frame. You may need to experiment with your cable management to get it just right.
 
-TK video here
+https://github.com/user-attachments/assets/b1d93ace-03cd-4235-aed0-e5d1a0a408d5
 
 Once the display is in place, flip the frame over and secure it using the two outermost holes on the back of the frame (closest to the board) using M3x8mm bolts. We will secure the rest of the display later.
 
-TK photo here
+![](steps-img/4-first-display.jpg)
 
 Then slide the second display into the other half of the frame in a similar fashion, and secure it as well.
 
-TK photo here
+![](steps-img/4-second-display.jpg)
 
 Now you should align both halves of the frame so that the two holes near the center line up. Secure the halves of the frame together (and to the displays) using M3x8mm bolts.
 
-TK photos here
+![](steps-img/4-aligned.jpg)
 
 Now you can fully secure the displays to the frame using the remaining holes.
+
+![](steps-img/4-complete.jpg)
 
 You may need to make minor adjustments to the position of the displays to ensure they are flush with the front of the frame, and that the LEDs are aligned with each other. To make these adjustments, you can loosen the bolts slightly and hold the displays in place while tightening them back up. I recommend using slight pressure toward the top and center of the frame so that there is minimal gap between them and that they are vertically aligned.
 
