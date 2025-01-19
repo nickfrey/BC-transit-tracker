@@ -20,6 +20,7 @@ While we will be using this display as a countdown clock, you could customize it
       - [Slicer settings](#slicer-settings)
   - [Part 4: Assemble the frame](#part-4-assemble-the-frame)
   - [You're done!](#youre-done)
+- [License](#license)
 
 ## Materials
 
@@ -138,3 +139,7 @@ Plug the board in to make sure everything still works. If it does, you're all se
 ### You're done!
 
 You can now mount your display anywhere you please. I personally mount mine to a wall using 3M Command strips, but you could also place it directly on a desk or other table.
+
+## License
+
+<p xmlns:cc="http://creativecommons.org/ns#" >This work (the guide and the design for the 3D-printed frame) is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
