@@ -26,7 +26,7 @@ While we will be using this display as a countdown clock, you could customize it
 
 - 1 × [Adafruit Matrix Portal S3](https://www.adafruit.com/product/5778)
 - 2 × [Waveshare RGB-Matrix-P2.5-64x32](https://www.waveshare.com/rgb-matrix-p2.5-64x32.htm)
-- 12 × M3x8mm machine bolts (you can get these at your local hardware store)
+- 12 × M3x8mm machine screws (you can get these at your local hardware store)
 - 1 × USB power supply, at least 5V 3A
 - 1 × USB-C cable, preferably right-angle
 
@@ -75,7 +75,7 @@ We will be using [ESPHome](https://esphome.io/) as the base for our display's fi
 
 ### Part 3: 3D print the frame
 
-The frame for the display is designed to be 3D printed in two halves to accommodate the small build volume of most printers. Each half will fit one display and will be bolted together once assembled.
+The frame for the display is designed to be 3D printed in two halves to accommodate the small build volume of most printers. Each half will fit one display and will be screwed together once assembled.
 
 The halves are identical, so you only need to print the same file twice. In the root of this repository you will find `frame.stl`.
 
@@ -116,7 +116,7 @@ If your cables have too much slack, it may pose a challenge to get the display t
 
 https://github.com/user-attachments/assets/b1d93ace-03cd-4235-aed0-e5d1a0a408d5
 
-Once the display is in place, flip the frame over and secure it using the two outermost holes on the back of the frame (closest to the board) using M3x8mm bolts. We will secure the rest of the display later.
+Once the display is in place, flip the frame over and secure it using the two outermost holes on the back of the frame (closest to the board) using M3x8mm screws. We will secure the rest of the display later.
 
 ![](steps-img/4-first-display.jpg)
 
@@ -124,7 +124,7 @@ Then slide the second display into the other half of the frame in a similar fash
 
 ![](steps-img/4-second-display.jpg)
 
-Now you should align both halves of the frame so that the two holes near the center line up. Secure the halves of the frame together (and to the displays) using M3x8mm bolts.
+Now you should align both halves of the frame so that the two holes near the center line up. Secure the halves of the frame together (and to the displays) using M3x8mm screws.
 
 ![](steps-img/4-aligned.jpg)
 
@@ -132,7 +132,7 @@ Now you can fully secure the displays to the frame using the remaining holes.
 
 ![](steps-img/4-complete.jpg)
 
-You may need to make minor adjustments to the position of the displays to ensure they are flush with the front of the frame, and that the LEDs are aligned with each other. To make these adjustments, you can loosen the bolts slightly and hold the displays in place while tightening them back up. I recommend using slight pressure toward the top and center of the frame so that there is minimal gap between them and that they are vertically aligned.
+You may need to make minor adjustments to the position of the displays to ensure they are flush with the front of the frame, and that the LEDs are aligned with each other. To make these adjustments, you can loosen the screws slightly and hold the displays in place while tightening them back up. I recommend using slight pressure toward the top and center of the frame so that there is minimal gap between them and that they are vertically aligned.
 
 Plug the board in to make sure everything still works. If it does, you're all set! If it doesn't, you may need to open the frame and inspect the connections again.
 
