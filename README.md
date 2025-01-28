@@ -1,4 +1,4 @@
-# DIY Transit Countdown Clock
+# Transit Tracker Build Guide
 
 > [!NOTE]  
 > This guide is a work in progress. You can still follow it, but some details may be missing or incomplete.
