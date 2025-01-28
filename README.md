@@ -92,7 +92,11 @@ There is no specific material recommendation; I have tested with PLA and it work
 
 To eliminate the need for supports, you should print the frame on its side as shown below:
 
-![](steps-img/3-orientation.png)
+<img src="steps-img/3-orientation.png" width="400"/>
+
+If your printer is a "bed slinger" design, the long side should be parallel to the axis on which the bed moves. This will reduce the resonance as the bed moves back and forth, which can cause artifacts in the print, especially near the top of the print.
+
+<img src="steps-img/3-bedslinger.png" width="500"/>
 
 ##### Slicer settings
 
@@ -100,11 +104,19 @@ Layer height should be 0.2mm or less for good fit and finish.
 
 To ensure dimensional accuracy where the displays are mounted, change your slicer's settings so that the z-seam is inside the frame as shown below.
 
-![](steps-img/3-zseam.png)
+<img src="steps-img/3-zseam.png" width="300"/>
 
-In Cura, selecting "Sharpest Corner" for the "Z Seam Alignment" setting performs well.
+- In Cura, selecting "Sharpest Corner" for the "Z Seam Alignment" setting performs well.
+- PrusaSlicer does not require any changes to the default settings.
 
 You should optimize any other settings for accuracy around the inner corners near the front of the display. This area requires the tightest tolerances to ensure a snug fit for the displays. For example, you could decrease the wall print speed in this area to allow for better cooling and accuracy.
+
+You know your printer best and these settings are ultimately up to you, but here are some general considerations to help reduce failure:
+
+- Make sure your build surface is clean.
+- Use a textured PEI sheet or similar to help with bed adhesion.
+- Use a brim.
+- Print at a slower speed to reduce the chance of the print coming loose from the bed.
 
 ### Part 4: Assemble the frame
 
