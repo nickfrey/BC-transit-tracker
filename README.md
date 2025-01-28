@@ -138,7 +138,7 @@ Plug the board in to make sure everything still works. If it does, you're all se
 
 ### You're done!
 
-You can now mount your display anywhere you please. I personally mount mine to a wall using 3M Command strips, but you could also place it directly on a desk or other table.
+You can now mount your display anywhere you please. There are mounting holes on the back of the frame so you can easily mount to the wall with screws. I personally mount mine using 3M Command strips, but you could also place it directly on a desk or other table.
 
 ## License
 
