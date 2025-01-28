@@ -108,6 +108,47 @@ light:
     output: display_brightness_output
     restore_mode: RESTORE_DEFAULT_ON
 
+script:
+  - id: dim_display
+    parameters:
+      up: bool
+    then:
+      - light.dim_relative:
+          id: display_brightness
+          relative_brightness: !lambda "return up ? 0.2 : -0.2;"
+          transition_length: 0.1s
+
+binary_sensor:
+  - platform: gpio
+    id: up_button
+    pin: &button_pin_cfg
+      number: GPIO6
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    filters: &button_filters
+      - autorepeat:
+        - delay: 500ms
+          time_off: 300ms
+          time_on: 100ms
+    on_press:
+      then:
+        - script.execute:
+            id: dim_display
+            up: true
+  - platform: gpio
+    id: down_button
+    pin:
+      <<: *button_pin_cfg
+      number: GPIO7
+    filters: *button_filters
+    on_press:
+      then:
+        - script.execute:
+            id: dim_display
+            up: false
+
 display:
   - platform: hub75_matrix_display
     id: matrix
