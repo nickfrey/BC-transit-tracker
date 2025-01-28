@@ -68,10 +68,16 @@ If the displays don't come to life:
 
 ### Part 2: Flash the firmware
 
-We will be using [ESPHome](https://esphome.io/) as the base for our display's firmware. ESPHome is a great platform with support for a wide range of devices and sensors, and it makes creating a custom ESP32-based device a very easy process. This means that you can extend the functionality of your countdown clock by adding more sensors in the future, as well as add it to home automation systems like Home Assistant.
+Next, we will flash the Transit Tracker firmware to the Matrix Portal board.
 
-> [!NOTE]  
-> The software is still in the works.
+1. Plug the board into your computer.
+2. Hold the "Boot" button on the board and press the "Reset" button at the same time. Let go of both buttons. The board should now be in flashing mode.
+3. Visit the [configuration website](https://countdown-config.horner.tj/flash) and follow the flashing instructions.
+4. Once flashed and connected to Wi-Fi, you can exit the flashing dialogue and press "Next: Configuration". Make sure the board and your computer are on the same network.
+5. Go to "Select feed" and choose the one that corresponds to your transit agency.
+6. Go to "Select routes" and find the stops/routes you are interested in, then press "Save".
+7. You can customize various options in "Customize styles".
+8. Once you are done, press "Save config" to push the configuration to the board.
 
 ### Part 3: 3D print the frame
 
