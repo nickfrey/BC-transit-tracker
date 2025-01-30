@@ -81,9 +81,9 @@ Next, we will flash the Transit Tracker firmware to the Matrix Portal board.
 
 ### Part 3: 3D print the frame
 
-The frame for the display is designed to be 3D printed in two halves to accommodate the small build volume of most printers. Each half will fit one display and will be screwed together once assembled.
+You can find the 3D model for the frame in [`frame/frame.stl`](frame/frame.stl), and the STEP file is available in [`frame/frame.step`](frame/frame.step) if you wish to make any modifications.
 
-The halves are identical, so you only need to print the same file twice. In the root of this repository you will find `frame.stl`.
+The frame for the display is designed to be 3D printed in two halves to accommodate the small build volume of most printers. Each half will fit one display and will be screwed together once assembled. The halves are identical, so you only need to print the same file twice.
 
 > [!NOTE]  
 > Your slicer may complain about the model not being water-tight or similar. This is normal due to how it was exported. You can manually inspect the generated G-code to ensure there are no issues.
