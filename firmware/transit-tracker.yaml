@@ -18,7 +18,7 @@ external_components:
   - source: github://TillFleisch/ESPHome-HUB75-MatrixDisplayWrapper@main
   - source: github://tjhorner/esphome-custom-components@main
     components: [ serial_rpc ]
-  - source: github://tjhorner/esphome-transit-tracker@main
+  - source: github://nickfrey/esphome-transit-tracker@main
     refresh: 0s
 
 logger:
@@ -260,19 +260,13 @@ display:
     pages:
       - id: transit_schedule
         lambda: |-
-          id(tracker).draw_schedule();
-      - id: ip_address_page
-        lambda: |-
-          int x = it.get_width() / 2;
-          int y = it.get_height() / 2;
+          id(tracker).draw_current_page();
 
-          auto ip_addresses = ::esphome::network::get_ip_addresses();
-          if (ip_addresses.empty()) {
-            it.printf(x, y, id(pixolletta), COLOR_ON, TextAlign::CENTER, "No IP Address");
-            return;
-          }
-
-          it.printf(x, y, id(pixolletta), COLOR_ON, TextAlign::CENTER, "%s", ip_addresses[0].str().c_str());
+interval:
+  - interval: 1s
+    then:
+      - lambda: |-
+          id(tracker).tick();
 
 font:
   - file: "fonts/Pixolletta8px.ttf"
@@ -291,5 +285,59 @@ web_server:
 
 transit_tracker:
   id: tracker
+  limit: 10
+  display_limit: 3
+  base_url: "wss://tt.horner.tj/"
+  time_display: "arrival"
+  show_units: "long"
+  list_mode: "sequential"
+  stops:
+    - stop_id: "st:1_68582"
+      stop_name: "Main Entrance"
+      routes:
+        - "st:1_100162"
+        - "st:1_100136"
+        - "st:1_100113"
+        - "st:1_102552"
+        - "st:1_102752"
+    - stop_id: "st:1_72984"
+      stop_name: "Parking Garage"
+      routes:
+        - "st:1_100162"
+        - "st:1_100136"
+        - "st:1_100113"
+        - "st:1_102552"
+        - "st:1_102752"
+    - stop_id: "st:1_72983"
+      stop_name: "Parking Garage"
+      routes:
+        - "st:1_100162"
+        - "st:1_100136"
+        - "st:1_100113"
+        - "st:1_102552"
+        - "st:1_102752"
+  abbreviations:
+    - from: "Bellevue Transit Center Bellevue Redmond Road"
+      to: "Bellevue TC"
+    - from: "Bellevue Transit Center South Bellevue Station"
+      to: "Bellevue TC"
+    - from: "Bellevue Transit Center Factoria"
+      to: "Bellevue TC"
+    - from: "Bellevue Transit Center Crossroads"
+      to: "Bellevue TC"
+    - from: "South Bellevue Station Eastgate"
+      to: "S Bellevue Link"
+    - from: "Downtown Redmond Station Overlake Village Station"
+      to: "Redmond"
+    - from: "Kirkland Crossroads"
+      to: "Kirkland TC"
+    - from: "Factoria Crossroads"
+      to: "Factoria"
+    - from: "University District Bellevue"
+      to: "U-District"
+    - from: "Issaquah Bellevue"
+      to: "Issaquah"
+    - from: "Transit Center"
+      to: "TC"
 
 serial_rpc:
