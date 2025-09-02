@@ -6,6 +6,10 @@ display:
     width: 64
     height: 64
     chain_length: 2
+    G1_pin: 41
+    B1_pin: 40
+    G2_pin: 39
+    B2_pin: 37
 
 transit_tracker:
   display_limit: 6
