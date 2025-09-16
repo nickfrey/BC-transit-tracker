@@ -1,5 +1,5 @@
 substitutions:
-  project_version: "dev"
+  project_version: "v1.0"
 
 esphome:
   name: transit-tracker
@@ -8,15 +8,20 @@ esphome:
   project:
     name: "Eastside Urbanism.Transit Tracker"
     version: ${project_version}
+  platformio_options:
+    build_flags: -DBOARD_HAS_PSRAM
 
 esp32:
-  board: esp32-s3-devkitc-1
+  board: esp32-s3-devkitm-1
   framework:
     type: arduino
+    platform_version: 6.12.0
+
+psram:
 
 external_components:
   - source: github://TillFleisch/ESPHome-HUB75-MatrixDisplayWrapper@main
-  - source: github://tjhorner/esphome-custom-components@main
+  - source: github://tjhorner/esphome-custom-components@fbb9f517c4b1d0a29fb3c387629a6de637ec08da
     components: [ serial_rpc ]
   - source: github://nickfrey/esphome-transit-tracker@main
     refresh: 0s
@@ -25,8 +30,7 @@ logger:
   level: DEBUG
 
 wifi:
-  ap:
-    password: "hunter2hunter2"
+  ssid: BC
 
 captive_portal:
 
@@ -38,13 +42,13 @@ http_request:
 
 ota:
   - platform: http_request
-  - platform: esphome
-    password: ""
 
 update:
   - platform: http_request
     name: Firmware Update
-    source: https://transit-tracker.eastsideurbanism.org/firmware/manifest.json
+    source: https://bcsustainability.github.io/firmware/manifest.json
+    id: fw_update
+    update_interval: 6h
 
 switch:
   - platform: template
@@ -100,7 +104,7 @@ text:
     on_value:
       then:
         lambda: |
-          id(tracker).set_schedule_string(id(schedule_config)->state);
+          
   - platform: template
     id: abbreviations_config
     mode: text
@@ -165,75 +169,6 @@ select:
         lambda: |-
           id(tracker).set_list_mode(id(list_mode_config)->state);
 
-number:
-  - platform: hub75_matrix_display
-    matrix_id: matrix
-    id: display_brightness_number
-
-output:
-  - platform: template
-    id: display_brightness_output
-    type: float
-    write_action:
-      - number.set:
-          id: display_brightness_number
-          value: !lambda return state * 255.0;
-
-light:
-  - platform: monochromatic
-    name: Display Brightness
-    id: display_brightness
-    output: display_brightness_output
-    restore_mode: RESTORE_DEFAULT_ON
-
-script:
-  - id: dim_display
-    parameters:
-      up: bool
-    then:
-      - light.dim_relative:
-          id: display_brightness
-          relative_brightness: !lambda "return up ? 0.2 : -0.2;"
-          transition_length: 0.1s
-
-binary_sensor:
-  - platform: template
-    id: both_buttons
-    lambda: |-
-      return id(up_button).state && id(down_button).state;
-    on_press:
-      then:
-        - display.page.show_next: matrix
-  - platform: gpio
-    id: up_button
-    pin: &button_pin_cfg
-      number: GPIO6
-      inverted: true
-      mode:
-        input: true
-        pullup: true
-    filters: &button_filters
-      - autorepeat:
-        - delay: 500ms
-          time_off: 300ms
-          time_on: 100ms
-    on_press:
-      then:
-        - script.execute:
-            id: dim_display
-            up: !lambda "return !id(flip_display_config).state;"
-  - platform: gpio
-    id: down_button
-    pin:
-      <<: *button_pin_cfg
-      number: GPIO7
-    filters: *button_filters
-    on_press:
-      then:
-        - script.execute:
-            id: dim_display
-            up: !lambda "return id(flip_display_config).state;"
-
 display:
   - platform: hub75_matrix_display
     id: matrix
@@ -256,7 +191,7 @@ display:
     CLK_pin: 2
     clock_phase: false
     i2sspeed: HZ_20M
-    brightness: 255
+    brightness: 254
     pages:
       - id: transit_schedule
         lambda: |-
@@ -267,6 +202,10 @@ interval:
     then:
       - lambda: |-
           id(tracker).tick();
+  - interval: 30s
+    then:
+      - lambda: |-
+          id(fw_update).perform(false);
 
 font:
   - file: "fonts/Pixolletta8px.ttf"
@@ -285,37 +224,13 @@ web_server:
 
 transit_tracker:
   id: tracker
-  limit: 10
+  limit: 20 # This is the max allowed by TJ Horner's API
   display_limit: 3
   base_url: "wss://tt.horner.tj/"
+  config_url: "https://bcsustainability.github.io/transit-tracker.json"
   time_display: "arrival"
   show_units: "long"
   list_mode: "sequential"
-  stops:
-    - stop_id: "st:1_68582"
-      stop_name: "Main Entrance"
-      routes:
-        - "st:1_100162"
-        - "st:1_100136"
-        - "st:1_100113"
-        - "st:1_102552"
-        - "st:1_102752"
-    - stop_id: "st:1_72984"
-      stop_name: "Parking Garage"
-      routes:
-        - "st:1_100162"
-        - "st:1_100136"
-        - "st:1_100113"
-        - "st:1_102552"
-        - "st:1_102752"
-    - stop_id: "st:1_72983"
-      stop_name: "Parking Garage"
-      routes:
-        - "st:1_100162"
-        - "st:1_100136"
-        - "st:1_100113"
-        - "st:1_102552"
-        - "st:1_102752"
   abbreviations:
     - from: "Bellevue Transit Center Bellevue Redmond Road"
       to: "Bellevue TC"
