@@ -246,6 +246,8 @@ transit_tracker:
       to: "Redmond"
     - from: "Kirkland Crossroads"
       to: "Kirkland TC"
+    - from: "Kirkland Transit Center Crossroads"
+      to: "Kirkland TC"
     - from: "Factoria Crossroads"
       to: "Factoria"
     - from: "University District Bellevue"
